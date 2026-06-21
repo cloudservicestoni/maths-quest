@@ -119,6 +119,39 @@ function PercentBar({ percent, label }: { percent: number; label?: string }) {
   );
 }
 
+function Angle({ degrees, label }: { degrees: number; label?: string }) {
+  const vx = 90, vy = 130, baseLen = 125, rayLen = 95, r = 34;
+  const rad = (degrees * Math.PI) / 180;
+  const ex = vx + rayLen * Math.cos(rad);
+  const ey = vy - rayLen * Math.sin(rad);
+  const arcEndX = vx + r * Math.cos(rad);
+  const arcEndY = vy - r * Math.sin(rad);
+  const bis = rad / 2;
+  const lx = vx + (r + 20) * Math.cos(bis);
+  const ly = vy - (r + 20) * Math.sin(bis);
+  return (
+    <svg viewBox="0 0 240 150" role="img" aria-label={`Angle of ${degrees} degrees`}>
+      <line x1={vx} y1={vy} x2={vx + baseLen} y2={vy} stroke="#6366f1" strokeWidth="3" strokeLinecap="round" />
+      <line x1={vx} y1={vy} x2={ex} y2={ey} stroke="#6366f1" strokeWidth="3" strokeLinecap="round" />
+      <path d={`M ${vx + r} ${vy} A ${r} ${r} 0 0 0 ${arcEndX} ${arcEndY}`} fill="none" stroke="#ec4899" strokeWidth="2" />
+      <circle cx={vx} cy={vy} r="3" fill="#0f172a" />
+      <text x={lx} y={ly} className="vd-num" fontSize="15">{label ?? `${degrees}°`}</text>
+    </svg>
+  );
+}
+
+function TriangleAngles({ a, b, c }: { a: string; b: string; c: string }) {
+  // A = top, B = bottom-left, C = bottom-right
+  return (
+    <svg viewBox="0 0 240 160" role="img" aria-label="Triangle with labelled angles">
+      <polygon points="120,25 30,135 210,135" fill="#6366f1" fillOpacity="0.1" stroke="#6366f1" strokeWidth="3" strokeLinejoin="round" />
+      <text x="120" y="58" className="vd-num" fontSize="15" textAnchor="middle">{a}</text>
+      <text x="64" y="122" className="vd-num" fontSize="15" textAnchor="middle">{b}</text>
+      <text x="176" y="122" className="vd-num" fontSize="15" textAnchor="middle">{c}</text>
+    </svg>
+  );
+}
+
 export default function Diagram({ spec }: { spec: DiagramSpec }) {
   let inner: React.ReactNode = null;
   switch (spec.type) {
@@ -128,6 +161,8 @@ export default function Diagram({ spec }: { spec: DiagramSpec }) {
     case 'venn3Labelled': inner = <Venn3Labelled {...spec.data} />; break;
     case 'conversionChain': inner = <ConversionChain {...spec.data} />; break;
     case 'percentBar': inner = <PercentBar {...spec.data} />; break;
+    case 'angle': inner = <Angle {...spec.data} />; break;
+    case 'triangleAngles': inner = <TriangleAngles {...spec.data} />; break;
   }
   return <div className="diagram">{inner}</div>;
 }

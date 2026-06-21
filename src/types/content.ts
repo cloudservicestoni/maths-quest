@@ -35,7 +35,9 @@ export type DiagramSpec =
   | { type: 'venn2Labelled'; data: { setA: string; setB: string } }
   | { type: 'venn3Labelled'; data: { setA: string; setB: string; setC: string } }
   | { type: 'conversionChain'; data: { units: string[]; factors: number[] } }
-  | { type: 'percentBar'; data: { percent: number; label?: string } };
+  | { type: 'percentBar'; data: { percent: number; label?: string } }
+  | { type: 'angle'; data: { degrees: number; label?: string } }
+  | { type: 'triangleAngles'; data: { a: string; b: string; c: string } };
 
 /* ---------- exam papers ---------- */
 export interface Question {

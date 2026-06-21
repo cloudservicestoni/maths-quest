@@ -25,12 +25,18 @@ import { moneyPaper1 } from './money/paper1';
 import { moneyPaper2 } from './money/paper2';
 import { moneyPaper3 } from './money/paper3';
 
-export const allLessons: Lesson[] = [...vennLessons, ...metricLessons, ...percentLessons, ...moneyLessons];
+import { anglesLessons } from './angles/lessons';
+import { anglesPaper1 } from './angles/paper1';
+import { anglesPaper2 } from './angles/paper2';
+import { anglesPaper3 } from './angles/paper3';
+
+export const allLessons: Lesson[] = [...vennLessons, ...metricLessons, ...percentLessons, ...moneyLessons, ...anglesLessons];
 export const allPapers: Paper[] = [
   vennPaper1, vennPaper2, vennPaper3,
   metricPaper1, metricPaper2, metricPaper3,
   percentPaper1, percentPaper2, percentPaper3,
   moneyPaper1, moneyPaper2, moneyPaper3,
+  anglesPaper1, anglesPaper2, anglesPaper3,
 ];
 
 export function getPaper(id: string): Paper | undefined {
