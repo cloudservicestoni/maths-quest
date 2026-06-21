@@ -9,6 +9,7 @@ export const TOPIC_META: TopicMeta[] = [
   { id: 'venn', icon: '🔵', accent: '#6366f1' },
   { id: 'metric', icon: '📏', accent: '#10b981' },
   { id: 'percent', icon: '💯', accent: '#ec4899' },
+  { id: 'money', icon: '💷', accent: '#ca8a04' },
 ];
 
 const fallback: Omit<TopicMeta, 'id'> = { icon: '📚', accent: '#6366f1' };

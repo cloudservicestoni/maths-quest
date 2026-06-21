@@ -20,11 +20,17 @@ import { percentPaper1 } from './percent/paper1';
 import { percentPaper2 } from './percent/paper2';
 import { percentPaper3 } from './percent/paper3';
 
-export const allLessons: Lesson[] = [...vennLessons, ...metricLessons, ...percentLessons];
+import { moneyLessons } from './money/lessons';
+import { moneyPaper1 } from './money/paper1';
+import { moneyPaper2 } from './money/paper2';
+import { moneyPaper3 } from './money/paper3';
+
+export const allLessons: Lesson[] = [...vennLessons, ...metricLessons, ...percentLessons, ...moneyLessons];
 export const allPapers: Paper[] = [
   vennPaper1, vennPaper2, vennPaper3,
   metricPaper1, metricPaper2, metricPaper3,
   percentPaper1, percentPaper2, percentPaper3,
+  moneyPaper1, moneyPaper2, moneyPaper3,
 ];
 
 export function getPaper(id: string): Paper | undefined {
