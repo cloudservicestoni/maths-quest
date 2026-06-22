@@ -38,7 +38,8 @@ export type DiagramSpec =
   | { type: 'percentBar'; data: { percent: number; label?: string } }
   | { type: 'angle'; data: { degrees: number; label?: string } }
   | { type: 'triangleAngles'; data: { a: string; b: string; c: string } }
-  | { type: 'barChart'; data: { title?: string; yLabel?: string; yMax: number; bars: { label: string; value: number }[] } };
+  | { type: 'barChart'; data: { title?: string; yLabel?: string; yMax: number; bars: { label: string; value: number }[] } }
+  | { type: 'rect'; data: { width: number; height: number; unit?: string; label?: string } };
 
 /* ---------- exam papers ---------- */
 export interface Question {

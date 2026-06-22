@@ -13,6 +13,7 @@ const WORLD_NAMES: Record<string, string> = {
   money:   'Money Market',
   angles:    'Angle Academy',
   barcharts: 'Chart City',
+  areas:     'Shape Station',
 };
 
 export default function Home() {

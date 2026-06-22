@@ -201,6 +201,37 @@ function TriangleAngles({ a, b, c }: { a: string; b: string; c: string }) {
   );
 }
 
+function LabelledRect({ width, height, unit = 'cm', label }: {
+  width: number; height: number; unit?: string; label?: string;
+}) {
+  const VW = 340, VH = 200;
+  const ML = 25, MR = 70, MT = 30, MB = 35;
+  const availW = VW - ML - MR;
+  const availH = VH - MT - MB;
+  const ratio = width / height;
+  let rW: number, rH: number;
+  if (ratio > availW / availH) {
+    rW = availW; rH = rW / ratio;
+  } else {
+    rH = availH; rW = rH * ratio;
+  }
+  const rx = ML + (availW - rW) / 2;
+  const ry = MT + (availH - rH) / 2;
+  return (
+    <svg viewBox={`0 0 ${VW} ${VH}`} role="img" aria-label={label ?? `Rectangle ${width} by ${height}`}>
+      {label && <text x={VW / 2} y={16} textAnchor="middle" fontSize="11" fontWeight="bold" fill="#1e1b4b">{label}</text>}
+      <rect x={rx} y={ry} width={rW} height={rH} fill="#14b8a615" stroke="#14b8a6" strokeWidth="2.5" rx="2" />
+      <polyline points={`${rx + 10},${ry + rH} ${rx + 10},${ry + rH - 10} ${rx},${ry + rH - 10}`} fill="none" stroke="#14b8a6" strokeWidth="1.5" />
+      <text x={rx + rW / 2} y={ry + rH + 22} textAnchor="middle" fontSize="13" fontWeight="bold" fill="#1e1b4b">
+        {width} {unit}
+      </text>
+      <text x={rx + rW + 14} y={ry + rH / 2 + 5} textAnchor="start" fontSize="13" fontWeight="bold" fill="#1e1b4b">
+        {height} {unit}
+      </text>
+    </svg>
+  );
+}
+
 export default function Diagram({ spec }: { spec: DiagramSpec }) {
   let inner: React.ReactNode = null;
   switch (spec.type) {
@@ -213,6 +244,7 @@ export default function Diagram({ spec }: { spec: DiagramSpec }) {
     case 'angle': inner = <Angle {...spec.data} />; break;
     case 'triangleAngles': inner = <TriangleAngles {...spec.data} />; break;
     case 'barChart': inner = <BarChart {...spec.data} />; break;
+    case 'rect': inner = <LabelledRect {...spec.data} />; break;
   }
   return <div className="diagram">{inner}</div>;
 }
