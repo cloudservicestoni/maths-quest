@@ -12,7 +12,7 @@ Read `CLAUDE.md` before starting any content work. Read `src/types/content.ts` t
 
 Structure per lesson: 1–2 `note` sections → 1 `example` section → 3–5 `practice` sections.
 
-- `body` in note sections may use `<b>`, `<em>`, `<ul>`, `<li>` HTML — keep it simple
+- `body` in note sections uses **Markdown** syntax: `**bold**`, `*italic*`, `- bullet`, and pipe tables (`| Col | Col |`). `LessonPage` converts it to HTML via `mdToHtml()`. Do not use raw HTML tags in body fields.
 - `steps` in example sections are plain text strings, written as numbered instructions
 - Practice parts: prefer `number` type; `text` with a generous `accept` list for vocabulary; `set` for "list numbers in any order"; `fraction` for fraction answers
 - Always include `answerDisplay` (shown when the student is wrong) — write it as a complete, clear answer a teacher would write on a board

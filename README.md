@@ -4,7 +4,20 @@
 React + Vite + TypeScript. Self-study lessons with instant feedback, timed exam
 papers with marking, and gamification (stars, streaks, badges, a mascot).
 
-Topics: **Venn Diagrams** and **Metric Conversions** (4 lessons + 3 papers each).
+Live at **[gsmq.netlify.app](https://gsmq.netlify.app)**.
+
+Topics (4 lessons + 3 exam papers each):
+
+| World | Topic |
+|---|---|
+| Venn Village | Venn Diagrams |
+| Metric Mountain | Metric Conversions |
+| Percent Peak | Percentages |
+| Money Market | Money & Decimals |
+| Angle Academy | Angles |
+| Chart City | Bar Charts & Data |
+| Shape Station | Area & Perimeter |
+| Polygon Park | Properties of Shapes |
 
 ## Develop
 
@@ -19,31 +32,35 @@ npm run preview    # serve the built app locally
 
 ```
 src/
-  types/content.ts        Typed content contract (Part is a discriminated union)
+  types/content.ts        Typed content contract (Lesson, Paper, Part, DiagramSpec)
   services/
     marking.ts            Pure marking — strategy map per answer type (open/closed)
     progress.ts           localStorage progress: stars, streaks, badges (+ observable)
   hooks/useProgress.ts    Subscribes React to ProgressService
   components/
-    Diagram.tsx           Venn (1/2/3-circle) + conversion-ladder SVGs
-    QuestionInput.tsx      One control for number/set/fraction/text/choice
-    PracticeBlock.tsx      Lesson practice with instant Check feedback
-    Stars.tsx, Mascot.tsx  Gamification visuals
+    Diagram.tsx           SVG renderer: venn, conversionLadder, triangleAngles, rect
+    QuestionInput.tsx     One control for number/set/fraction/text/choice
+    PracticeBlock.tsx     Lesson practice with instant Check feedback
+    Stars.tsx, Mascot.tsx Gamification visuals
   pages/
-    Home.tsx              Hub: stats, badges, topic cards with stars/best
-    LessonPage.tsx        Renders notes / examples / practice
-    ExamPage.tsx          Timer, submit, animated results, retake
+    Home.tsx              World map hub: stats, badges, topic nodes with progress
+    LessonPage.tsx        Renders notes (Markdown) / worked examples / practice
+    ExamPage.tsx          Timer, submit, animated results, Boss Battle on Paper 3
   data/
+    topics.ts             Icon, accent colour, display order per topic
     registry.ts           Aggregates topics; the place new content plugs in
-    venn/, metric/        Typed lesson + paper modules
+    {topicId}/            lessons.ts + paper1.ts + paper2.ts + paper3.ts
 ```
 
 ### Adding content
+Use `/new-topic` to scaffold a new topic, then the `content-author` agent to flesh
+it out. See `CLAUDE.md` for the full checklist.
+
 - **New paper/lesson:** add a typed module under `data/<topic>/`, import it in
   `data/registry.ts`. TypeScript enforces the shape — a wrong answer type or a
   missing field fails the build.
-- **New answer type:** add a `Part` variant in `types/content.ts` and one entry
-  in the `markers` map in `services/marking.ts`. Nothing else changes.
+- **New diagram type:** add a variant to the `DiagramSpec` union in `types/content.ts`
+  and a matching render branch in `components/Diagram.tsx`.
 
 ### Answer marking types
 `number` (whole or decimal; units/commas ignored) · `set` (numbers, any order) ·

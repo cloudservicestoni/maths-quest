@@ -73,9 +73,18 @@ src/
 - Netlify auto-deploys on push to `main`
 - Always run `npx tsc --noEmit` before committing — use `/verify` skill
 
+## Lesson note body format
+Lesson `note` sections render their `body` field via `mdToHtml()` in `LessonPage.tsx`.
+Write body strings in **Markdown** — not raw HTML:
+- `**bold**` → `<strong>`, `*italic*` → `<em>`
+- `- item` → `<ul><li>`
+- Pipe tables: `| Col | Col |\n|---|---|\n| val | val |` → `<table class="md-table">`
+- Plain paragraphs are wrapped in `<p>` automatically
+- Existing HTML-style bodies (venn, metric etc.) pass through unchanged
+
 ## Hard rules
 - No CDN `<link>` or `<script>` tags — Netlify CSP blocks them at runtime
-- Never edit `src/services/marking.ts` without testing all 5 topic papers in the preview
+- Never edit `src/services/marking.ts` without testing all paper types in the preview
 - Never push to `origin` — Tee does that
 - Never rename or re-use a part/lesson/paper ID — stored progress would orphan
 - Diagrams: only use `DiagramSpec` variants defined in `src/types/content.ts`
