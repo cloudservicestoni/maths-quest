@@ -172,3 +172,111 @@ body {
 .is-wrong .mark-icon { color: var(--red); }
 .result-given { color: var(--muted); font-size: .92rem; margin: 6px 0 0 26px; }
 .result-correct { font-size: .95rem; margin: 6px 0 0 26px; }
+
+/* ---------- world map (home) ---------- */
+.world-map { display: flex; flex-direction: column; margin: 8px 0 24px; }
+.world-node-wrap { display: flex; flex-direction: column; align-items: stretch; }
+.world-connector { width: 3px; height: 22px; background: var(--border); margin: 0 auto; border-radius: 999px; }
+.world-node {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--surface); border: 2px solid var(--border); border-radius: var(--radius);
+  padding: 14px 16px; cursor: pointer; font: inherit; color: inherit; text-align: left;
+  transition: transform .12s ease, box-shadow .15s ease, border-color .15s ease;
+  box-shadow: var(--shadow);
+}
+.world-node:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(79,70,229,.16); border-color: var(--primary); }
+.world-active { border-color: #c7d2fe; }
+.world-conquered { border-color: var(--amber) !important; box-shadow: 0 0 0 3px rgba(245,158,11,.15), var(--shadow); }
+.world-node-icon {
+  position: relative; width: 54px; height: 54px; border-radius: 50%;
+  border: 3px solid var(--border); display: grid; place-items: center; flex-shrink: 0;
+}
+.world-emoji { font-size: 26px; line-height: 1; }
+.world-crown { position: absolute; top: -10px; right: -8px; font-size: 16px; }
+.world-node-body { flex: 1; min-width: 0; }
+.world-node-name { display: block; font-weight: 800; font-size: 1.08rem; }
+.world-node-meta { display: block; color: var(--muted); font-size: .8rem; margin-bottom: 6px; }
+.world-node-arrow { color: var(--muted); font-size: 1.5rem; font-weight: 800; flex-shrink: 0; }
+
+/* ---------- daily check-in banner ---------- */
+.checkin-banner {
+  display: flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg, #fef9c3, #fef3c7);
+  border: 1px solid #fde68a; border-radius: 14px;
+  padding: 12px 16px; font-weight: 700; color: #92400e; margin: 10px 0;
+}
+
+/* ---------- Pi intro block (lessons) ---------- */
+.pi-intro {
+  display: flex; align-items: center; gap: 12px;
+  background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 14px;
+  padding: 12px 14px; margin-bottom: 14px;
+}
+.pi-intro-text { margin: 0; font-size: .95rem; color: var(--primary-dark); font-weight: 600; }
+
+/* ---------- Boss Battle intro ---------- */
+.boss-intro-page { display: flex; align-items: center; justify-content: center; min-height: 80vh; }
+.boss-intro-card {
+  background: var(--surface); border: 2px solid #818cf8; border-radius: var(--radius);
+  padding: 32px 24px; text-align: center; max-width: 400px; width: 100%;
+  box-shadow: 0 8px 40px rgba(99,102,241,.22);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.boss-intro-card h2 { font-size: 2rem; margin: 12px 0 2px; }
+.boss-intro-card h3 { color: var(--muted); font-size: 1rem; margin: 0 0 14px; font-weight: 600; }
+.boss-intro-desc { font-size: 1rem; font-weight: 700; margin: 0 0 6px; font-style: italic; }
+.boss-intro-sub { color: var(--muted); font-size: .88rem; margin: 0 0 6px; }
+.btn-boss { font-size: 1.15rem; margin-top: 16px; width: 100%; }
+
+/* ---------- Boss Battle exam header ---------- */
+.boss-header {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+  border-radius: 14px; color: #e0e7ff; padding: 16px; margin-bottom: 4px;
+}
+.boss-header h1 { color: #c7d2fe; }
+.boss-header .tagline { color: #a5b4fc; }
+.boss-header .back-link { color: #a5b4fc; }
+.boss-header .timer { background: rgba(255,255,255,.1); border-color: rgba(99,102,241,.6); color: #e0e7ff; }
+.boss-header .timer-low { color: #fca5a5; border-color: #ef4444; }
+
+/* ---------- power-ups ---------- */
+.powerup-bar { display: flex; gap: 8px; justify-content: center; margin: 8px 0 4px; flex-wrap: wrap; }
+.powerup-btn {
+  padding: 8px 18px; border-radius: 999px; border: 2px solid var(--primary);
+  background: #eef2ff; color: var(--primary-dark); font: inherit;
+  font-size: .9rem; font-weight: 800; cursor: pointer;
+  transition: background .12s, opacity .12s;
+}
+.powerup-btn:hover:not(:disabled) { background: #e0e7ff; }
+.powerup-used {
+  border-color: var(--border) !important; background: var(--bg) !important;
+  color: var(--muted) !important; cursor: default; opacity: .6;
+  text-decoration: line-through;
+}
+
+/* ---------- Pi hint bubble ---------- */
+.pi-hint-bubble {
+  display: flex; align-items: center; gap: 12px;
+  background: #eef2ff; border: 2px solid var(--primary); border-radius: 14px;
+  padding: 12px 14px; margin: 8px 0;
+}
+.pi-hint-bubble p { flex: 1; margin: 0; font-weight: 600; color: var(--primary-dark); font-size: .95rem; }
+.pi-hint-bubble button { background: none; border: none; cursor: pointer; font-size: 1.1rem; color: var(--muted); padding: 0 4px; line-height: 1; }
+
+/* ---------- frozen timer ---------- */
+.timer-frozen { color: #0ea5e9 !important; border-color: #0ea5e9 !important; animation: freeze-pulse 1s ease-in-out infinite; }
+@keyframes freeze-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .65; } }
+
+/* ---------- speed bonus + combo (results) ---------- */
+.speed-badge {
+  background: linear-gradient(135deg, #fef9c3, #fef3c7);
+  border: 1px solid #fde68a; color: #92400e;
+  border-radius: 12px; padding: 11px 16px; font-weight: 800; text-align: center; margin: 6px 0;
+}
+.combo-stat {
+  background: linear-gradient(135deg, #fff7ed, #ffedd5);
+  border: 1px solid #fed7aa; color: #c2410c;
+  border-radius: 12px; padding: 11px 16px; font-weight: 800; text-align: center; margin: 6px 0;
+}
+.score-card-boss { border: 2px solid #818cf8; box-shadow: 0 0 0 4px rgba(99,102,241,.1), var(--shadow); }
+.boss-conquered-flag { margin-top: 10px; font-size: 1.2rem; font-weight: 800; color: var(--amber); }

@@ -4,13 +4,20 @@ import { getLesson, lessonsForTopic } from '../data/registry';
 import { ProgressService } from '../services/progress';
 import Diagram from '../components/Diagram';
 import PracticeBlock from '../components/PracticeBlock';
+import Mascot from '../components/Mascot';
+
+function piIntroText(level: string): string {
+  const stars = (level.match(/⭐/g) ?? []).length;
+  if (stars >= 3) return "This one's the toughest yet — but that's exactly how we get smarter! Take your time 💪";
+  if (stars === 2) return "You've got the basics sorted! Now let's go a bit deeper. I'm right here with you 🦉";
+  return "Let's build the foundations together. Work through each step and you'll get it ⭐";
+}
 
 export default function LessonPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const lesson = id ? getLesson(id) : undefined;
 
-  // Track correctness of every practice part across the lesson.
   const results = useRef<Record<string, boolean>>({});
 
   const totalPracticeParts = useMemo(() => {
@@ -40,6 +47,11 @@ export default function LessonPage() {
         <h1>{lesson.title}</h1>
         <p className="tagline">{lesson.level}  {lesson.summary}</p>
       </header>
+
+      <div className="pi-intro">
+        <Mascot mood="happy" size={40} />
+        <p className="pi-intro-text">{piIntroText(lesson.level)}</p>
+      </div>
 
       {lesson.sections.map((s, i) => {
         if (s.type === 'note') {
