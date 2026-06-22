@@ -140,6 +140,55 @@ function Angle({ degrees, label }: { degrees: number; label?: string }) {
   );
 }
 
+function BarChart({ title, yLabel, yMax, bars }: {
+  title?: string; yLabel?: string; yMax: number;
+  bars: { label: string; value: number }[];
+}) {
+  const ML = 44, MR = 12, MT = 28, MB = 38;
+  const W = 340, H = 210;
+  const cW = W - ML - MR;
+  const cH = H - MT - MB;
+  const n = bars.length;
+  const bW = Math.min(34, (cW / n) * 0.55);
+  const gap = (cW - n * bW) / (n + 1);
+  const COLS = ['#6366f1', '#10b981', '#f59e0b', '#ec4899', '#0ea5e9', '#f97316', '#8b5cf6', '#14b8a6'];
+  const ticks = 5;
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={title ?? 'Bar chart'}>
+      {title && <text x={W / 2} y={16} textAnchor="middle" fontSize="11" fontWeight="bold" fill="#1e1b4b">{title}</text>}
+      <line x1={ML} y1={MT} x2={ML} y2={MT + cH} stroke="#94a3b8" strokeWidth="1.5" />
+      <line x1={ML} y1={MT + cH} x2={ML + cW} y2={MT + cH} stroke="#94a3b8" strokeWidth="1.5" />
+      {Array.from({ length: ticks + 1 }, (_, i) => {
+        const val = (yMax * i) / ticks;
+        const y = MT + cH - (cH * i) / ticks;
+        return (
+          <g key={i}>
+            {i > 0 && <line x1={ML} y1={y} x2={ML + cW} y2={y} stroke="#e2e8f0" strokeWidth="0.8" strokeDasharray="3,3" />}
+            <text x={ML - 5} y={y + 4} textAnchor="end" fontSize="9" fill="#64748b">{val}</text>
+          </g>
+        );
+      })}
+      {bars.map((bar, i) => {
+        const bH = (bar.value / yMax) * cH;
+        const x = ML + gap + i * (bW + gap);
+        const y = MT + cH - bH;
+        const cx = x + bW / 2;
+        return (
+          <g key={i}>
+            <rect x={x} y={y} width={bW} height={bH} fill={COLS[i % COLS.length]} fillOpacity="0.85" rx="2" />
+            <text x={cx} y={y - 4} textAnchor="middle" fontSize="9" fontWeight="bold" fill="#1e1b4b">{bar.value}</text>
+            <text x={cx} y={MT + cH + 14} textAnchor="middle" fontSize="8.5" fill="#475569">{bar.label}</text>
+          </g>
+        );
+      })}
+      {yLabel && (
+        <text x={8} y={MT + cH / 2} textAnchor="middle" fontSize="9" fill="#64748b"
+          transform={`rotate(-90,8,${MT + cH / 2})`}>{yLabel}</text>
+      )}
+    </svg>
+  );
+}
+
 function TriangleAngles({ a, b, c }: { a: string; b: string; c: string }) {
   // A = top, B = bottom-left, C = bottom-right
   return (
@@ -163,6 +212,7 @@ export default function Diagram({ spec }: { spec: DiagramSpec }) {
     case 'percentBar': inner = <PercentBar {...spec.data} />; break;
     case 'angle': inner = <Angle {...spec.data} />; break;
     case 'triangleAngles': inner = <TriangleAngles {...spec.data} />; break;
+    case 'barChart': inner = <BarChart {...spec.data} />; break;
   }
   return <div className="diagram">{inner}</div>;
 }

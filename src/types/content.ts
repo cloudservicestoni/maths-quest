@@ -37,7 +37,8 @@ export type DiagramSpec =
   | { type: 'conversionChain'; data: { units: string[]; factors: number[] } }
   | { type: 'percentBar'; data: { percent: number; label?: string } }
   | { type: 'angle'; data: { degrees: number; label?: string } }
-  | { type: 'triangleAngles'; data: { a: string; b: string; c: string } };
+  | { type: 'triangleAngles'; data: { a: string; b: string; c: string } }
+  | { type: 'barChart'; data: { title?: string; yLabel?: string; yMax: number; bars: { label: string; value: number }[] } };
 
 /* ---------- exam papers ---------- */
 export interface Question {

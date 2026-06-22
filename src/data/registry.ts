@@ -30,13 +30,19 @@ import { anglesPaper1 } from './angles/paper1';
 import { anglesPaper2 } from './angles/paper2';
 import { anglesPaper3 } from './angles/paper3';
 
-export const allLessons: Lesson[] = [...vennLessons, ...metricLessons, ...percentLessons, ...moneyLessons, ...anglesLessons];
+import { barchartsLessons } from './barcharts/lessons';
+import { barchartsPaper1 } from './barcharts/paper1';
+import { barchartsPaper2 } from './barcharts/paper2';
+import { barchartsPaper3 } from './barcharts/paper3';
+
+export const allLessons: Lesson[] = [...vennLessons, ...metricLessons, ...percentLessons, ...moneyLessons, ...anglesLessons, ...barchartsLessons];
 export const allPapers: Paper[] = [
   vennPaper1, vennPaper2, vennPaper3,
   metricPaper1, metricPaper2, metricPaper3,
   percentPaper1, percentPaper2, percentPaper3,
   moneyPaper1, moneyPaper2, moneyPaper3,
   anglesPaper1, anglesPaper2, anglesPaper3,
+  barchartsPaper1, barchartsPaper2, barchartsPaper3,
 ];
 
 export function getPaper(id: string): Paper | undefined {

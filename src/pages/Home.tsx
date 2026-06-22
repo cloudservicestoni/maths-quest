@@ -11,7 +11,8 @@ const WORLD_NAMES: Record<string, string> = {
   metric:  'Metric Mountain',
   percent: 'Percent Peak',
   money:   'Money Market',
-  angles:  'Angle Academy',
+  angles:    'Angle Academy',
+  barcharts: 'Chart City',
 };
 
 export default function Home() {
