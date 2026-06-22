@@ -280,3 +280,10 @@ body {
 }
 .score-card-boss { border: 2px solid #818cf8; box-shadow: 0 0 0 4px rgba(99,102,241,.1), var(--shadow); }
 .boss-conquered-flag { margin-top: 10px; font-size: 1.2rem; font-weight: 800; color: var(--amber); }
+
+/* ---------- Markdown table (lesson notes) ---------- */
+.md-table { width: 100%; border-collapse: collapse; font-size: .875rem; margin: .5rem 0 1rem; }
+.md-table th, .md-table td { padding: .35rem .7rem; text-align: left; border: 1px solid var(--border); }
+.md-table thead { background: #ede9fe; }
+.md-table thead th { font-weight: 700; color: var(--primary-dark); }
+.md-table tbody tr:nth-child(even) { background: #f8fafc; }

@@ -40,7 +40,12 @@ import { areasPaper1 } from './areas/paper1';
 import { areasPaper2 } from './areas/paper2';
 import { areasPaper3 } from './areas/paper3';
 
-export const allLessons: Lesson[] = [...vennLessons, ...metricLessons, ...percentLessons, ...moneyLessons, ...anglesLessons, ...barchartsLessons, ...areasLessons];
+import { shapesLessons } from './shapes/lessons';
+import { shapesPaper1 } from './shapes/paper1';
+import { shapesPaper2 } from './shapes/paper2';
+import { shapesPaper3 } from './shapes/paper3';
+
+export const allLessons: Lesson[] = [...vennLessons, ...metricLessons, ...percentLessons, ...moneyLessons, ...anglesLessons, ...barchartsLessons, ...areasLessons, ...shapesLessons];
 export const allPapers: Paper[] = [
   vennPaper1, vennPaper2, vennPaper3,
   metricPaper1, metricPaper2, metricPaper3,
@@ -49,6 +54,7 @@ export const allPapers: Paper[] = [
   anglesPaper1, anglesPaper2, anglesPaper3,
   barchartsPaper1, barchartsPaper2, barchartsPaper3,
   areasPaper1, areasPaper2, areasPaper3,
+  shapesPaper1, shapesPaper2, shapesPaper3,
 ];
 
 export function getPaper(id: string): Paper | undefined {

@@ -6,6 +6,68 @@ import Diagram from '../components/Diagram';
 import PracticeBlock from '../components/PracticeBlock';
 import Mascot from '../components/Mascot';
 
+function mdToHtml(body: string): string {
+  if (!body) return '';
+  const isMd = /\*\*/.test(body) || /(?:^|\n)- /.test(body) || /(?:^|\n)\s*\|/.test(body);
+  if (!isMd) return body;
+
+  const inline = (s: string) =>
+    s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+     .replace(/\*([^*\n]+?)\*/g, '<em>$1</em>');
+
+  const lines = body.split('\n');
+  let out = '';
+  let i = 0;
+
+  while (i < lines.length) {
+    const line = lines[i];
+    if (line.trim() === '') { i++; continue; }
+
+    if (/^\s*\|/.test(line)) {
+      out += '<table class="md-table"><thead>';
+      let first = true;
+      while (i < lines.length && /^\s*\|/.test(lines[i])) {
+        const row = lines[i].trim();
+        if (/^[\s|:-]+$/.test(row)) { i++; continue; }
+        const cells = row.split('|').slice(1, -1).map(c => inline(c.trim()));
+        if (first) {
+          out += '<tr>' + cells.map(c => `<th>${c}</th>`).join('') + '</tr></thead><tbody>';
+          first = false;
+        } else {
+          out += '<tr>' + cells.map(c => `<td>${c}</td>`).join('') + '</tr>';
+        }
+        i++;
+      }
+      out += '</tbody></table>';
+      continue;
+    }
+
+    if (/^- /.test(line.trim())) {
+      out += '<ul>';
+      while (i < lines.length && /^- /.test(lines[i].trim())) {
+        out += '<li>' + inline(lines[i].trim().slice(2)) + '</li>';
+        i++;
+      }
+      out += '</ul>';
+      continue;
+    }
+
+    let para = '';
+    while (
+      i < lines.length &&
+      lines[i].trim() !== '' &&
+      !/^\s*\|/.test(lines[i]) &&
+      !/^- /.test(lines[i].trim())
+    ) {
+      para += (para ? ' ' : '') + lines[i].trim();
+      i++;
+    }
+    if (para) out += '<p>' + inline(para) + '</p>';
+  }
+
+  return out;
+}
+
 function piIntroText(level: string): string {
   const stars = (level.match(/⭐/g) ?? []).length;
   if (stars >= 3) return "This one's the toughest yet — but that's exactly how we get smarter! Take your time 💪";
@@ -58,7 +120,7 @@ export default function LessonPage() {
           return (
             <section className="lesson-note" key={i}>
               {s.heading && <h3>{s.heading}</h3>}
-              {s.body && <div className="note-body" dangerouslySetInnerHTML={{ __html: s.body }} />}
+              {s.body && <div className="note-body" dangerouslySetInnerHTML={{ __html: mdToHtml(s.body) }} />}
               {s.diagram && <Diagram spec={s.diagram} />}
             </section>
           );

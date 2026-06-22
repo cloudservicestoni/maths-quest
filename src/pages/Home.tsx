@@ -14,6 +14,7 @@ const WORLD_NAMES: Record<string, string> = {
   angles:    'Angle Academy',
   barcharts: 'Chart City',
   areas:     'Shape Station',
+  shapes:    'Polygon Park',
 };
 
 export default function Home() {
