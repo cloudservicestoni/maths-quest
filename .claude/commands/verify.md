@@ -1,6 +1,6 @@
 Run the standard Maths Quest pre-commit verification:
 
-1. **TypeScript check** — run `npx tsc --noEmit` in the project root. If there are errors, show them and stop; do not proceed to the preview until they're fixed.
+1. **TypeScript check** — run `npm run build` in the project root (this runs `tsc -b` which is stricter than `tsc --noEmit` and matches the Netlify build exactly). If there are errors, show them and stop; do not proceed to the preview until they're fixed.
 
 2. **Preview server** — start it if not already running (name: `maths-quest`, port 5173 or next available).
 
