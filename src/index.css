@@ -281,6 +281,18 @@ body {
 .score-card-boss { border: 2px solid #818cf8; box-shadow: 0 0 0 4px rgba(99,102,241,.1), var(--shadow); }
 .boss-conquered-flag { margin-top: 10px; font-size: 1.2rem; font-weight: 800; color: var(--amber); }
 
+/* ---------- Session review ---------- */
+.review-meta {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  background: var(--surface); border-radius: 14px;
+  padding: 14px 16px; margin: 0 0 16px; box-shadow: var(--shadow);
+}
+.review-meta-item { display: flex; flex-direction: column; gap: 2px; font-size: .9rem; }
+.review-meta-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.review-parts { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.card-session { background: var(--surface); border: 1.5px solid #c7d2fe; }
+.card-session:hover { border-color: var(--primary); }
+
 /* ---------- Markdown table (lesson notes) ---------- */
 .md-table { width: 100%; border-collapse: collapse; font-size: .875rem; margin: .5rem 0 1rem; }
 .md-table th, .md-table td { padding: .35rem .7rem; text-align: left; border: 1px solid var(--border); }

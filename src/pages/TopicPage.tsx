@@ -2,6 +2,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getTopic } from '../data/registry';
 import { ProgressService } from '../services/progress';
+import { SessionService } from '../services/sessions';
 import { useProgress } from '../hooks/useProgress';
 import Stars from '../components/Stars';
 
@@ -10,6 +11,7 @@ export default function TopicPage() {
   const navigate = useNavigate();
   const progress = useProgress();
   const topic = id ? getTopic(id) : undefined;
+  const pastSessions = topic?.id === 'venn' ? SessionService.listForTopic(topic.id) : [];
 
   if (!topic) {
     return <div className="page"><p>Topic not found.</p><Link to="/">← Home</Link></div>;
@@ -68,6 +70,32 @@ export default function TopicPage() {
                   <span className="card-meta">{p.totalMarks} marks · {p.timeLimitMinutes} min</span>
                   {best ? <span className="card-best">Best: {best.bestScore}/{p.totalMarks}</span> : null}
                   <Stars count={ProgressService.paperStars(p.id)} />
+                </motion.button>
+              );
+            })}
+          </div>
+        </>
+      )}
+      {pastSessions.length > 0 && (
+        <>
+          <h3 className="section-head">📋 Past Sessions</h3>
+          <div className="card-grid">
+            {pastSessions.map((s) => {
+              const date = new Date(s.doneAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+              const pct = Math.round((s.score / s.totalMarks) * 100);
+              return (
+                <motion.button
+                  key={s.id}
+                  className="card card-session"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  whileTap={{ scale: 0.97 }}
+                  onClick={() => navigate(`/review/${s.id}`)}
+                >
+                  <span className="card-title">{s.paperTitle.replace(/^.+? — /, '')}</span>
+                  <span className="card-sub">{s.paperSubtitle}</span>
+                  <span className="card-meta">{date}</span>
+                  <span className="card-meta"><strong>{s.score}/{s.totalMarks}</strong> · {pct}%</span>
                 </motion.button>
               );
             })}

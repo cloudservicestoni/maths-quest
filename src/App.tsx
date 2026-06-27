@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import TopicPage from './pages/TopicPage';
 import LessonPage from './pages/LessonPage';
 import ExamPage from './pages/ExamPage';
+import SessionReviewPage from './pages/SessionReviewPage';
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
           <Route path="/topic/:id" element={<TopicPage />} />
           <Route path="/lesson/:id" element={<LessonPage />} />
           <Route path="/exam/:id" element={<ExamPage />} />
+          <Route path="/review/:id" element={<SessionReviewPage />} />
         </Routes>
       </div>
     </HashRouter>

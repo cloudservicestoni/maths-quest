@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { getPaper } from '../data/registry';
 import { markPaper, type PaperResult } from '../services/marking';
 import { ProgressService, type RecordResult } from '../services/progress';
+import { SessionService } from '../services/sessions';
 import Diagram from '../components/Diagram';
 import QuestionInput from '../components/QuestionInput';
 import Stars from '../components/Stars';
@@ -53,6 +54,24 @@ export default function ExamPage() {
     setCombo(maxCombo);
     setResult(marked);
     setRecord(ProgressService.recordPaper(paper.id, marked.scored, marked.total, { combo: maxCombo, speedBonus }));
+    SessionService.save({
+      id: `${paper.id}-${Date.now()}`,
+      paperId: paper.id,
+      topicId: paper.topicId,
+      paperTitle: `${paper.topicTitle} — ${paper.title}`,
+      paperSubtitle: paper.subtitle,
+      doneAt: Date.now(),
+      score: marked.scored,
+      totalMarks: marked.total,
+      timeTakenSeconds: paper.timeLimitMinutes * 60 - timeLeft,
+      parts: marked.results.map((r) => ({
+        partId: r.part.id,
+        label: r.part.label,
+        givenAnswer: r.given,
+        correct: r.correct,
+        answerDisplay: r.part.answerDisplay,
+      })),
+    });
     setTimedOut(auto);
     window.scrollTo(0, 0);
   }
