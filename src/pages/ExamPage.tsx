@@ -59,7 +59,7 @@ export default function ExamPage() {
       paperId: paper.id,
       topicId: paper.topicId,
       paperTitle: `${paper.topicTitle} — ${paper.title}`,
-      paperSubtitle: paper.subtitle,
+      paperSubtitle: paper.subtitle ?? '',
       doneAt: Date.now(),
       score: marked.scored,
       totalMarks: marked.total,
