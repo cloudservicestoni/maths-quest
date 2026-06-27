@@ -11,7 +11,7 @@ export default function TopicPage() {
   const navigate = useNavigate();
   const progress = useProgress();
   const topic = id ? getTopic(id) : undefined;
-  const pastSessions = topic?.id === 'venn' ? SessionService.listForTopic(topic.id) : [];
+  const pastSessions = topic ? SessionService.listForTopic(topic.id) : [];
 
   if (!topic) {
     return <div className="page"><p>Topic not found.</p><Link to="/">← Home</Link></div>;
