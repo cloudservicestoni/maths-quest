@@ -15,6 +15,7 @@ const WORLD_NAMES: Record<string, string> = {
   barcharts: 'Chart City',
   areas:     'Shape Station',
   shapes:    'Polygon Park',
+  fractions: 'Fraction Forest',
 };
 
 export default function Home() {
