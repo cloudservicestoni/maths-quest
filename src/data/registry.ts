@@ -49,6 +49,9 @@ import { fractionsLessons } from './fractions/lessons';
 import { fractionsPaper1 } from './fractions/paper1';
 import { fractionsPaper2 } from './fractions/paper2';
 import { fractionsPaper3 } from './fractions/paper3';
+import { fractionsPaper4 } from './fractions/paper4';
+import { fractionsPaper5 } from './fractions/paper5';
+import { fractionsPaper6 } from './fractions/paper6';
 
 export const allLessons: Lesson[] = [...vennLessons, ...metricLessons, ...percentLessons, ...moneyLessons, ...anglesLessons, ...barchartsLessons, ...areasLessons, ...shapesLessons, ...fractionsLessons];
 export const allPapers: Paper[] = [
@@ -61,6 +64,7 @@ export const allPapers: Paper[] = [
   areasPaper1, areasPaper2, areasPaper3,
   shapesPaper1, shapesPaper2, shapesPaper3,
   fractionsPaper1, fractionsPaper2, fractionsPaper3,
+  fractionsPaper4, fractionsPaper5, fractionsPaper6,
 ];
 
 export function getPaper(id: string): Paper | undefined {
