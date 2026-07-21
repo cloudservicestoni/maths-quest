@@ -47,6 +47,7 @@ export const areasPaper2: Paper = {
       n: 2,
       marks: 4,
       prompt: 'A rectangular garden is 5 m long and 3 m wide. It is to be covered with square tiles of side 50 cm.',
+      diagram: { type: 'rect', data: { width: 5, height: 3, unit: 'm', label: 'Garden: 5 m × 3 m' } },
       parts: [
         {
           id: '2a', label: 'a) What is the area of the garden?',
@@ -76,6 +77,7 @@ export const areasPaper2: Paper = {
       n: 3,
       marks: 4,
       prompt: 'An L-shape is formed by removing a rectangle from the top-right corner of a 10 cm × 8 cm rectangle. The removed piece is 4 cm wide, but its height is unknown. The L-shape has area 64 cm².',
+      diagram: { type: 'lshape', data: { outerW: 10, outerH: 8, notchW: 4, notchH: 4, unit: 'cm', hideNotchH: true } },
       parts: [
         {
           id: '3a', label: 'a) What is the area of the full 10 cm × 8 cm rectangle?',
@@ -105,6 +107,7 @@ export const areasPaper2: Paper = {
       n: 4,
       marks: 4,
       prompt: 'An L-shaped field has overall width 20 m and height 15 m. A rectangular section 8 m wide and 6 m tall is removed from the top-right corner.',
+      diagram: { type: 'lshape', data: { outerW: 20, outerH: 15, notchW: 8, notchH: 6, unit: 'm', hideDerived: true } },
       parts: [
         {
           id: '4a', label: 'a) What is the area of the L-shaped field?',
@@ -184,6 +187,7 @@ export const areasPaper2: Paper = {
       n: 7,
       marks: 3,
       prompt: 'A wall is 4 m wide and 2.5 m high.',
+      diagram: { type: 'rect', data: { width: 4, height: 2.5, unit: 'm', label: 'Wall: 4 m × 2.5 m' } },
       parts: [
         {
           id: '7a', label: 'a) What is the area of the wall?',
