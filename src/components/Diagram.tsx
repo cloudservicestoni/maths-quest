@@ -453,8 +453,8 @@ function ShapeGrid({ shapes, cols = 2 }: {
   );
 }
 
-function LShape({ outerW, outerH, notchW, notchH, unit = 'cm' }: {
-  outerW: number; outerH: number; notchW: number; notchH: number; unit?: string;
+function LShape({ outerW, outerH, notchW, notchH, unit = 'cm', hideDerived = false }: {
+  outerW: number; outerH: number; notchW: number; notchH: number; unit?: string; hideDerived?: boolean;
 }) {
   const VW = 340, VH = 230;
   const ML = 75, MR = 45, MT = 24, MB = 50;
@@ -463,7 +463,7 @@ function LShape({ outerW, outerH, notchW, notchH, unit = 'cm' }: {
   const sW = outerW * scale, sH = outerH * scale;
   const nW = notchW * scale, nH = notchH * scale;
   const ox = ML + (availW - sW) / 2, oy = MT + (availH - sH) / 2;
-  const C = '#14b8a6', LB = '#1e1b4b', fs = 12;
+  const C = '#14b8a6', LB = '#1e1b4b', DIM = '#64748b', fs = 12;
   const lbl = (v: number) => `${v} ${unit}`;
   const pts = [
     `${ox},${oy}`,
@@ -485,15 +485,15 @@ function LShape({ outerW, outerH, notchW, notchH, unit = 'cm' }: {
       {/* bottom */}
       <text x={ox + sW / 2} y={oy + sH + 24} textAnchor="middle" fontSize={fs} fill={LB}>{lbl(outerW)}</text>
       {/* top-left section */}
-      <text x={ox + (sW - nW) / 2} y={oy - 8} textAnchor="middle" fontSize={fs} fill={LB}>{lbl(outerW - notchW)}</text>
+      <text x={ox + (sW - nW) / 2} y={oy - 8} textAnchor="middle" fontSize={fs} fill={hideDerived ? DIM : LB}>{hideDerived ? '?' : lbl(outerW - notchW)}</text>
       {/* notch left vertical — inside notch space */}
       <text x={ox + sW - nW + 20} y={niy} textAnchor="middle" fontSize={fs} fill={LB}
         transform={`rotate(-90 ${ox + sW - nW + 20} ${niy})`}>{lbl(notchH)}</text>
       {/* notch bottom — above inner step */}
       <text x={ox + sW - nW / 2} y={oy + nH - 8} textAnchor="middle" fontSize={fs} fill={LB}>{lbl(notchW)}</text>
       {/* right lower side */}
-      <text x={ox + sW + 20} y={rcy} textAnchor="middle" fontSize={fs} fill={LB}
-        transform={`rotate(-90 ${ox + sW + 20} ${rcy})`}>{lbl(outerH - notchH)}</text>
+      <text x={ox + sW + 20} y={rcy} textAnchor="middle" fontSize={fs} fill={hideDerived ? DIM : LB}
+        transform={`rotate(-90 ${ox + sW + 20} ${rcy})`}>{hideDerived ? '?' : lbl(outerH - notchH)}</text>
     </svg>
   );
 }

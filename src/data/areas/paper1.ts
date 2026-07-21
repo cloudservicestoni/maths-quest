@@ -99,6 +99,7 @@ export const areasPaper1: Paper = {
       n: 4,
       marks: 4,
       prompt: 'An L-shaped playground has overall width 15 m and height 12 m. A rectangular section 7 m wide and 5 m tall is removed from the top-right corner.',
+      diagram: { type: 'lshape', data: { outerW: 15, outerH: 12, notchW: 7, notchH: 5, unit: 'm' } },
       parts: [
         {
           id: '4a', label: 'a) What is the area of the full 15 m × 12 m rectangle?',
@@ -128,6 +129,7 @@ export const areasPaper1: Paper = {
       n: 5,
       marks: 3,
       prompt: 'An L-shaped room has overall width 12 m and height 8 m. A rectangular section 4 m wide and 3 m tall is removed from the top-right corner.',
+      diagram: { type: 'lshape', data: { outerW: 12, outerH: 8, notchW: 4, notchH: 3, unit: 'm', hideDerived: true } },
       parts: [
         {
           id: '5a', label: 'a) What is the missing horizontal side of the L-shape (the inner top)?',
@@ -152,6 +154,7 @@ export const areasPaper1: Paper = {
       n: 6,
       marks: 4,
       prompt: 'A rectangular hall is 9 m long and 6 m wide. It is to be tiled with square tiles of side 30 cm.',
+      diagram: { type: 'rect', data: { width: 9, height: 6, unit: 'm', label: 'Hall: 9 m × 6 m' } },
       parts: [
         {
           id: '6a', label: 'a) What is the floor area?',
