@@ -12,6 +12,7 @@ export const anglesPaper2: Paper = {
   topicTitle: 'Angles in Shapes',
   title: 'Paper 2',
   subtitle: 'Moderate',
+  topicDescription: '11+ practice — naming angles and finding missing ones in lines, triangles and shapes.',
   timeLimitMinutes: 20,
   totalMarks: 25,
   intro:
@@ -38,6 +39,7 @@ export const anglesPaper2: Paper = {
     },
     {
       n: 3, marks: 4, prompt: 'Find the missing angle in each triangle.',
+      diagram: { type: 'triangleAngles', data: { a: '?', b: '55°', c: '65°' } },
       parts: [
         { id: 'an2-3a', label: 'a) 55° and 65°. Third = ___°', marks: 1, type: 'number', answer: 60, answerDisplay: '60  (180 − 120)' },
         { id: 'an2-3b', label: 'b) 90° and 38°. Third = ___°', marks: 1, type: 'number', answer: 52, answerDisplay: '52  (180 − 128)' },
@@ -75,7 +77,7 @@ export const anglesPaper2: Paper = {
       parts: [
         { id: 'an2-7a', label: 'a) A triangle has angles 40° and 90°. The third is ___°', marks: 1, type: 'number', answer: 50, answerDisplay: '50  (180 − 130)' },
         { id: 'an2-7b', label: 'b) An angle of 130° is what type?', marks: 1, type: 'choice', options: ['Acute', 'Right', 'Obtuse', 'Reflex'], answer: 'Obtuse', answerDisplay: 'Obtuse' },
-        { id: 'an2-7c', label: 'c) Do 70° and 110° make a straight line? (yes/no)', marks: 1, type: 'text', accept: ['yes'], answerDisplay: 'Yes  (70 + 110 = 180)' },
+        { id: 'an2-7c', label: 'c) Do 70° and 110° make a straight line? (yes/no)', marks: 1, type: 'text', accept: ['yes', 'Yes', 'YES'], answerDisplay: 'Yes  (70 + 110 = 180)' },
         { id: 'an2-7d', label: 'd) Half of a straight-line angle is ___°', marks: 1, type: 'number', answer: 90, answerDisplay: '90  (180 ÷ 2)' },
       ],
     },

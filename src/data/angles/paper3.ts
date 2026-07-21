@@ -30,6 +30,7 @@ export const anglesPaper3: Paper = {
     },
     {
       n: 2, marks: 4, prompt: 'Triangles.',
+      diagram: { type: 'triangleAngles', data: { a: '?', b: '33°', c: '57°' } },
       parts: [
         { id: 'an3-2a', label: 'a) Two angles are 33° and 57°. The third is ___°', marks: 1, type: 'number', answer: 90, answerDisplay: '90  (180 − 90)' },
         { id: 'an3-2b', label: 'b) Isosceles with base angles of 72° each. The top angle is ___°', marks: 1, type: 'number', answer: 36, answerDisplay: '36  (180 − 144)' },

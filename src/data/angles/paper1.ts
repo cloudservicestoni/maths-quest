@@ -10,7 +10,8 @@ export const anglesPaper1: Paper = {
   topicId: 'angles',
   topicTitle: 'Angles in Shapes',
   title: 'Paper 1',
-  subtitle: 'Basics',
+  subtitle: 'Exam Ready',
+  topicDescription: '11+ practice — naming angles and finding missing ones in lines, triangles and shapes.',
   timeLimitMinutes: 20,
   totalMarks: 25,
   intro:
@@ -44,6 +45,7 @@ export const anglesPaper1: Paper = {
     },
     {
       n: 4, marks: 3, prompt: 'Find the third angle in each triangle.',
+      diagram: { type: 'triangleAngles', data: { a: '?', b: '70°', c: '60°' } },
       parts: [
         { id: 'an1-4a', label: 'a) 70° and 60°. Third = ___°', marks: 1, type: 'number', answer: 50, answerDisplay: '50  (180 − 130)' },
         { id: 'an1-4b', label: 'b) 90° and 40°. Third = ___°', marks: 1, type: 'number', answer: 50, answerDisplay: '50  (180 − 130)' },
