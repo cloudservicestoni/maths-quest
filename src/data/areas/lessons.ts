@@ -192,6 +192,7 @@ export const areasLessons: Lesson[] = [
         type: 'example',
         heading: 'Worked example — L-shape',
         intro: 'An L-shape has overall width 10 cm and height 8 cm. A 4 cm × 3 cm rectangle is cut from the top-right corner.',
+        diagram: { type: 'lshape', data: { outerW: 10, outerH: 8, notchW: 4, notchH: 3, unit: 'cm' } },
         steps: [
           'Full rectangle = 10 × 8 = 80 cm²',
           'Removed piece = 4 × 3 = 12 cm²',
@@ -205,6 +206,7 @@ export const areasLessons: Lesson[] = [
       {
         type: 'practice',
         heading: 'Practice — compound area',
+        diagram: { type: 'lshape', data: { outerW: 12, outerH: 9, notchW: 5, notchH: 4, unit: 'cm' } },
         parts: [
           {
             id: 'p1a',
@@ -224,6 +226,7 @@ export const areasLessons: Lesson[] = [
       {
         type: 'practice',
         heading: 'Practice — compound perimeter',
+        diagram: { type: 'lshape', data: { outerW: 12, outerH: 9, notchW: 5, notchH: 4, unit: 'cm' } },
         parts: [
           {
             id: 'p2a',
@@ -263,6 +266,7 @@ export const areasLessons: Lesson[] = [
         type: 'example',
         heading: 'Worked example — tiling',
         intro: 'A rectangular floor is 6 m long and 4 m wide. Square tiles have side 50 cm. How many tiles are needed?',
+        diagram: { type: 'rect', data: { width: 6, height: 4, unit: 'm', label: 'Floor: 6 m × 4 m' } },
         steps: [
           'Convert: 50 cm = 0.5 m',
           'Tile area = 0.5 × 0.5 = 0.25 m²',
@@ -300,6 +304,7 @@ export const areasLessons: Lesson[] = [
         type: 'note',
         heading: 'Comparing shapes',
         body: 'Two shapes can have the **same perimeter** but different areas.\n\n**Example:**\n- Rectangle P: 12 cm × 5 cm → P = 34 cm, A = 60 cm²\n- Rectangle Q: 8 cm × 9 cm → P = 34 cm, A = 72 cm²\n\nSame perimeter — Q has greater area. A shape closer to a square always has more area for the same perimeter.',
+        diagram: { type: 'rect', data: { width: 8, height: 9, unit: 'cm', label: 'Rectangle Q: 8 × 9 = 72 cm²' } },
       },
       {
         type: 'practice',

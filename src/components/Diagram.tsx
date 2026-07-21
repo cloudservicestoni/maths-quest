@@ -453,6 +453,51 @@ function ShapeGrid({ shapes, cols = 2 }: {
   );
 }
 
+function LShape({ outerW, outerH, notchW, notchH, unit = 'cm' }: {
+  outerW: number; outerH: number; notchW: number; notchH: number; unit?: string;
+}) {
+  const VW = 340, VH = 230;
+  const ML = 75, MR = 45, MT = 24, MB = 50;
+  const availW = VW - ML - MR, availH = VH - MT - MB;
+  const scale = Math.min(availW / outerW, availH / outerH);
+  const sW = outerW * scale, sH = outerH * scale;
+  const nW = notchW * scale, nH = notchH * scale;
+  const ox = ML + (availW - sW) / 2, oy = MT + (availH - sH) / 2;
+  const C = '#14b8a6', LB = '#1e1b4b', fs = 12;
+  const lbl = (v: number) => `${v} ${unit}`;
+  const pts = [
+    `${ox},${oy}`,
+    `${ox + sW - nW},${oy}`,
+    `${ox + sW - nW},${oy + nH}`,
+    `${ox + sW},${oy + nH}`,
+    `${ox + sW},${oy + sH}`,
+    `${ox},${oy + sH}`,
+  ].join(' ');
+  const cy = oy + sH / 2;
+  const niy = oy + nH / 2;
+  const rcy = oy + nH + (sH - nH) / 2;
+  return (
+    <svg viewBox={`0 0 ${VW} ${VH}`} role="img" aria-label="L-shaped compound shape">
+      <polygon points={pts} fill={C} fillOpacity="0.12" stroke={C} strokeWidth="2.5" strokeLinejoin="round" />
+      {/* left side */}
+      <text x={ox - 20} y={cy} textAnchor="middle" fontSize={fs} fill={LB}
+        transform={`rotate(-90 ${ox - 20} ${cy})`}>{lbl(outerH)}</text>
+      {/* bottom */}
+      <text x={ox + sW / 2} y={oy + sH + 24} textAnchor="middle" fontSize={fs} fill={LB}>{lbl(outerW)}</text>
+      {/* top-left section */}
+      <text x={ox + (sW - nW) / 2} y={oy - 8} textAnchor="middle" fontSize={fs} fill={LB}>{lbl(outerW - notchW)}</text>
+      {/* notch left vertical — inside notch space */}
+      <text x={ox + sW - nW + 20} y={niy} textAnchor="middle" fontSize={fs} fill={LB}
+        transform={`rotate(-90 ${ox + sW - nW + 20} ${niy})`}>{lbl(notchH)}</text>
+      {/* notch bottom — above inner step */}
+      <text x={ox + sW - nW / 2} y={oy + nH - 8} textAnchor="middle" fontSize={fs} fill={LB}>{lbl(notchW)}</text>
+      {/* right lower side */}
+      <text x={ox + sW + 20} y={rcy} textAnchor="middle" fontSize={fs} fill={LB}
+        transform={`rotate(-90 ${ox + sW + 20} ${rcy})`}>{lbl(outerH - notchH)}</text>
+    </svg>
+  );
+}
+
 export default function Diagram({ spec }: { spec: DiagramSpec }) {
   let inner: React.ReactNode = null;
   switch (spec.type) {
@@ -469,6 +514,7 @@ export default function Diagram({ spec }: { spec: DiagramSpec }) {
     case 'shape2d': inner = <Shape2D {...spec.data} />; break;
     case 'shape3d': inner = <Shape3D {...spec.data} />; break;
     case 'shapeGrid': inner = <ShapeGrid {...spec.data} />; break;
+    case 'lshape': inner = <LShape {...spec.data} />; break;
   }
   return <div className="diagram">{inner}</div>;
 }

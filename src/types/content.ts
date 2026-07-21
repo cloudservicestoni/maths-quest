@@ -42,7 +42,8 @@ export type DiagramSpec =
   | { type: 'rect'; data: { width: number; height: number; unit?: string; label?: string } }
   | { type: 'shape2d'; data: { shape: string; label?: string; symmetryLines?: boolean } }
   | { type: 'shape3d'; data: { shape: string; label?: string } }
-  | { type: 'shapeGrid'; data: { shapes: Array<{ shape: string; label: string; symmetryLines?: boolean }>; cols?: number } };
+  | { type: 'shapeGrid'; data: { shapes: Array<{ shape: string; label: string; symmetryLines?: boolean }>; cols?: number } }
+  | { type: 'lshape'; data: { outerW: number; outerH: number; notchW: number; notchH: number; unit?: string } };
 
 /* ---------- exam papers ---------- */
 export interface Question {
