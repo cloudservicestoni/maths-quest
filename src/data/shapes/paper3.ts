@@ -52,6 +52,7 @@ export const shapesPaper3: Paper = {
       n: 2,
       marks: 4,
       prompt: 'Use Euler\'s formula (F + V − E = 2) to identify these 3D shapes.',
+      diagram: { type: 'shape3d', data: { shape: 'cuboid', label: 'Cuboid' } },
       parts: [
         {
           id: '2a', label: 'a) A polyhedron has 12 edges and 8 vertices. How many faces does it have?',
@@ -83,6 +84,7 @@ export const shapesPaper3: Paper = {
       n: 3,
       marks: 3,
       prompt: 'A pentagonal prism has two pentagonal ends and five rectangular sides.',
+      diagram: { type: 'shape3d', data: { shape: 'pentagonal-prism', label: 'Pentagonal Prism' } },
       parts: [
         {
           id: '3a', label: 'a) How many faces does it have?',
@@ -137,6 +139,7 @@ export const shapesPaper3: Paper = {
       n: 5,
       marks: 4,
       prompt: 'A quadrilateral has these properties: 4 equal sides, no right angles, 2 lines of symmetry, order of rotational symmetry 2.',
+      diagram: { type: 'shape2d', data: { shape: 'rhombus', label: 'Rhombus' } },
       parts: [
         {
           id: '5a', label: 'a) Name the shape.',
@@ -192,6 +195,7 @@ export const shapesPaper3: Paper = {
       n: 7,
       marks: 3,
       prompt: 'A square-based pyramid has a square base of side 5 cm. Each triangular face has base 5 cm and slant height 7 cm.',
+      diagram: { type: 'shape3d', data: { shape: 'square-pyramid', label: 'Square-based Pyramid' } },
       parts: [
         {
           id: '7a', label: 'a) What is the area of the square base?',

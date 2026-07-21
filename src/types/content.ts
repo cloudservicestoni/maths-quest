@@ -39,7 +39,10 @@ export type DiagramSpec =
   | { type: 'angle'; data: { degrees: number; label?: string } }
   | { type: 'triangleAngles'; data: { a: string; b: string; c: string } }
   | { type: 'barChart'; data: { title?: string; yLabel?: string; yMax: number; bars: { label: string; value: number }[] } }
-  | { type: 'rect'; data: { width: number; height: number; unit?: string; label?: string } };
+  | { type: 'rect'; data: { width: number; height: number; unit?: string; label?: string } }
+  | { type: 'shape2d'; data: { shape: string; label?: string; symmetryLines?: boolean } }
+  | { type: 'shape3d'; data: { shape: string; label?: string } }
+  | { type: 'shapeGrid'; data: { shapes: Array<{ shape: string; label: string; symmetryLines?: boolean }>; cols?: number } };
 
 /* ---------- exam papers ---------- */
 export interface Question {

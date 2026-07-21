@@ -21,16 +21,53 @@ export const shapesLessons: Lesson[] = [
         type: 'note',
         heading: 'Triangles (3 sides, 3 vertices)',
         body: '| Type | Properties |\n|---|---|\n| **Equilateral** | All 3 sides equal · all angles 60° · 3 lines of symmetry |\n| **Isosceles** | Exactly 2 sides equal · 2 base angles equal · 1 line of symmetry |\n| **Scalene** | All 3 sides different · all angles different · 0 lines of symmetry |\n| **Right-angled** | One angle = 90° · can be isosceles or scalene |',
+        diagram: {
+          type: 'shapeGrid',
+          data: {
+            cols: 2,
+            shapes: [
+              { shape: 'equilateral', label: 'Equilateral' },
+              { shape: 'isosceles',   label: 'Isosceles' },
+              { shape: 'scalene',     label: 'Scalene' },
+              { shape: 'right',       label: 'Right-angled' },
+            ],
+          },
+        },
       },
       {
         type: 'note',
         heading: 'Quadrilaterals (4 sides, 4 vertices)',
         body: '| Shape | Key properties |\n|---|---|\n| **Square** | 4 equal sides · 4 right angles |\n| **Rectangle** | Opposite sides equal · 4 right angles |\n| **Parallelogram** | 2 pairs of parallel sides · opposite sides equal |\n| **Rhombus** | 4 equal sides · opposite angles equal · no right angles |\n| **Trapezium** | Exactly 1 pair of parallel sides |\n| **Kite** | 2 pairs of adjacent equal sides |',
+        diagram: {
+          type: 'shapeGrid',
+          data: {
+            cols: 2,
+            shapes: [
+              { shape: 'square',        label: 'Square' },
+              { shape: 'rectangle',     label: 'Rectangle' },
+              { shape: 'parallelogram', label: 'Parallelogram' },
+              { shape: 'rhombus',       label: 'Rhombus' },
+              { shape: 'trapezium',     label: 'Trapezium' },
+              { shape: 'kite',          label: 'Kite' },
+            ],
+          },
+        },
       },
       {
         type: 'note',
         heading: 'Polygons with more sides',
         body: '| Name | Sides |\n|---|---|\n| Pentagon | 5 |\n| Hexagon | 6 |\n| Heptagon | 7 |\n| Octagon | 8 |\n| Nonagon | 9 |\n| Decagon | 10 |\n\nA **regular** polygon has all sides and angles equal. A regular n-gon has **n** lines of symmetry.',
+        diagram: {
+          type: 'shapeGrid',
+          data: {
+            cols: 3,
+            shapes: [
+              { shape: 'pentagon', label: 'Pentagon (5)' },
+              { shape: 'hexagon',  label: 'Hexagon (6)' },
+              { shape: 'octagon',  label: 'Octagon (8)' },
+            ],
+          },
+        },
       },
       {
         type: 'example',
@@ -102,6 +139,20 @@ export const shapesLessons: Lesson[] = [
         type: 'note',
         heading: 'Lines of symmetry',
         body: 'A **line of symmetry** (mirror line) folds a shape into two identical halves.\n\n| Shape | Lines of symmetry |\n|---|---|\n| Equilateral triangle | 3 |\n| Isosceles triangle | 1 |\n| Scalene triangle | 0 |\n| Square | 4 |\n| Rectangle (non-square) | 2 |\n| Parallelogram (non-rectangle) | 0 |\n| Rhombus | 2 |\n| Kite | 1 |\n| Regular pentagon | 5 |\n| Regular hexagon | 6 |\n| Regular octagon | 8 |\n\nRule: a **regular n-gon** has exactly **n** lines of symmetry.',
+        diagram: {
+          type: 'shapeGrid',
+          data: {
+            cols: 2,
+            shapes: [
+              { shape: 'equilateral', label: 'Equilateral — 3 lines',  symmetryLines: true },
+              { shape: 'isosceles',   label: 'Isosceles — 1 line',     symmetryLines: true },
+              { shape: 'square',      label: 'Square — 4 lines',       symmetryLines: true },
+              { shape: 'rhombus',     label: 'Rhombus — 2 lines',      symmetryLines: true },
+              { shape: 'kite',        label: 'Kite — 1 line',          symmetryLines: true },
+              { shape: 'hexagon',     label: 'Hexagon — 6 lines',      symmetryLines: true },
+            ],
+          },
+        },
       },
       {
         type: 'practice',
@@ -137,6 +188,20 @@ export const shapesLessons: Lesson[] = [
         type: 'note',
         heading: 'Order of rotational symmetry',
         body: 'A shape has **rotational symmetry** if it looks identical after being rotated by less than 360°.\n\nThe **order** is how many times the shape looks the same in one full turn.\n\n| Shape | Order |\n|---|---|\n| Equilateral triangle | 3 |\n| Square | 4 |\n| Rectangle (non-square) | 2 |\n| Parallelogram | 2 |\n| Rhombus | 2 |\n| Regular pentagon | 5 |\n| Regular hexagon | 6 |\n| Kite / Scalene triangle | 1 (no rotational symmetry) |\n\nA regular n-gon has rotational symmetry of order **n**.',
+        diagram: {
+          type: 'shapeGrid',
+          data: {
+            cols: 3,
+            shapes: [
+              { shape: 'equilateral', label: 'Order 3' },
+              { shape: 'square',      label: 'Order 4' },
+              { shape: 'rhombus',     label: 'Order 2' },
+              { shape: 'pentagon',    label: 'Order 5' },
+              { shape: 'hexagon',     label: 'Order 6' },
+              { shape: 'kite',        label: 'Order 1' },
+            ],
+          },
+        },
       },
       {
         type: 'practice',
@@ -188,6 +253,7 @@ export const shapesLessons: Lesson[] = [
         type: 'note',
         heading: 'Faces, edges, and vertices of 3D shapes',
         body: '- **Face** — a flat (or curved) surface.\n- **Edge** — where two faces meet.\n- **Vertex (vertices)** — a point where edges meet (a corner).\n\n| Shape | Faces | Edges | Vertices |\n|---|---|---|---|\n| Cube | 6 | 12 | 8 |\n| Cuboid | 6 | 12 | 8 |\n| Triangular prism | 5 | 9 | 6 |\n| Square-based pyramid | 5 | 8 | 5 |\n| Triangular pyramid (tetrahedron) | 4 | 6 | 4 |\n| Cylinder | 3 (2 flat + 1 curved) | 2 curved | 0 |\n| Cone | 2 (1 flat + 1 curved) | 1 curved | 1 |\n| Sphere | 1 curved | 0 | 0 |',
+        diagram: { type: 'shape3d', data: { shape: 'cube', label: 'Cube — 6 faces, 12 edges, 8 vertices' } },
       },
       {
         type: 'example',
@@ -199,6 +265,7 @@ export const shapesLessons: Lesson[] = [
           'Vertices: 3 on front + 3 on back = 6 vertices.',
         ],
         result: 'Triangular prism: F = 5, E = 9, V = 6.',
+        diagram: { type: 'shape3d', data: { shape: 'triangular-prism', label: 'Triangular Prism' } },
       },
       {
         type: 'note',
@@ -208,6 +275,7 @@ export const shapesLessons: Lesson[] = [
       {
         type: 'practice',
         heading: 'Practice — 3D shapes and Euler\'s formula',
+        diagram: { type: 'shape3d', data: { shape: 'square-pyramid', label: 'Square-based Pyramid' } },
         parts: [
           {
             id: 'p1a',
@@ -260,6 +328,17 @@ export const shapesLessons: Lesson[] = [
         type: 'note',
         heading: 'Interior angle sum',
         body: 'The **sum of interior angles** of a polygon with n sides:\n\n**(n − 2) × 180°**\n\n| Polygon | Sides | Angle sum |\n|---|---|---|\n| Triangle | 3 | 180° |\n| Quadrilateral | 4 | 360° |\n| Pentagon | 5 | 540° |\n| Hexagon | 6 | 720° |\n| Octagon | 8 | 1080° |\n| Decagon | 10 | 1440° |\n\nFor a **regular polygon**, each interior angle = sum ÷ n.',
+        diagram: {
+          type: 'shapeGrid',
+          data: {
+            cols: 3,
+            shapes: [
+              { shape: 'pentagon', label: 'Pentagon 540°' },
+              { shape: 'hexagon',  label: 'Hexagon 720°' },
+              { shape: 'octagon',  label: 'Octagon 1080°' },
+            ],
+          },
+        },
       },
       {
         type: 'example',

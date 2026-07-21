@@ -22,6 +22,16 @@ export const shapesPaper2: Paper = {
       n: 1,
       marks: 4,
       prompt: 'Answer these questions about quadrilaterals.',
+      diagram: {
+        type: 'shapeGrid',
+        data: {
+          cols: 2,
+          shapes: [
+            { shape: 'rhombus', label: 'Rhombus' },
+            { shape: 'kite',    label: 'Kite' },
+          ],
+        },
+      },
       parts: [
         {
           id: '1a', label: 'a) Which quadrilateral has 4 equal sides but no right angles?',
@@ -105,6 +115,7 @@ export const shapesPaper2: Paper = {
       n: 4,
       marks: 4,
       prompt: 'Use Euler\'s formula (F + V − E = 2) to answer these questions.',
+      diagram: { type: 'shape3d', data: { shape: 'triangular-prism', label: 'Triangular Prism' } },
       parts: [
         {
           id: '4a', label: 'a) A polyhedron has F = 5 and E = 9. Find V.',
@@ -162,6 +173,7 @@ export const shapesPaper2: Paper = {
       n: 6,
       marks: 3,
       prompt: 'A regular pentagon.',
+      diagram: { type: 'shape2d', data: { shape: 'pentagon', label: 'Regular Pentagon' } },
       parts: [
         {
           id: '6a', label: 'a) What is the order of rotational symmetry?',

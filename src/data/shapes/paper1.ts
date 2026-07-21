@@ -105,6 +105,7 @@ export const shapesPaper1: Paper = {
       n: 4,
       marks: 4,
       prompt: 'A triangular prism has two triangular ends and three rectangular sides.',
+      diagram: { type: 'shape3d', data: { shape: 'triangular-prism', label: 'Triangular Prism' } },
       parts: [
         {
           id: '4a', label: 'a) How many faces does it have?',
@@ -158,6 +159,7 @@ export const shapesPaper1: Paper = {
       n: 6,
       marks: 4,
       prompt: 'A square-based pyramid has a square base and four triangular faces.',
+      diagram: { type: 'shape3d', data: { shape: 'square-pyramid', label: 'Square-based Pyramid' } },
       parts: [
         {
           id: '6a', label: 'a) How many faces does it have?',
