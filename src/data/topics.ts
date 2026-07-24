@@ -16,6 +16,7 @@ export const TOPIC_META: TopicMeta[] = [
   { id: 'shapes',    icon: '🔶', accent: '#8b5cf6' },
   { id: 'fractions', icon: '🍕', accent: '#e11d48' },
   { id: 'ratio',     icon: '⚖️',  accent: '#f59e0b' },
+  { id: 'algebra',   icon: '🧮',  accent: '#7c3aed' },
 ];
 
 const fallback: Omit<TopicMeta, 'id'> = { icon: '📚', accent: '#6366f1' };

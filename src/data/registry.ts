@@ -58,7 +58,12 @@ import { ratioPaper1 } from './ratio/paper1';
 import { ratioPaper2 } from './ratio/paper2';
 import { ratioPaper3 } from './ratio/paper3';
 
-export const allLessons: Lesson[] = [...vennLessons, ...metricLessons, ...percentLessons, ...moneyLessons, ...anglesLessons, ...barchartsLessons, ...areasLessons, ...shapesLessons, ...fractionsLessons, ...ratioLessons];
+import { algebraLessons } from './algebra/lessons';
+import { algebraPaper1 } from './algebra/paper1';
+import { algebraPaper2 } from './algebra/paper2';
+import { algebraPaper3 } from './algebra/paper3';
+
+export const allLessons: Lesson[] = [...vennLessons, ...metricLessons, ...percentLessons, ...moneyLessons, ...anglesLessons, ...barchartsLessons, ...areasLessons, ...shapesLessons, ...fractionsLessons, ...ratioLessons, ...algebraLessons];
 export const allPapers: Paper[] = [
   vennPaper1, vennPaper2, vennPaper3,
   metricPaper1, metricPaper2, metricPaper3,
@@ -71,6 +76,7 @@ export const allPapers: Paper[] = [
   fractionsPaper1, fractionsPaper2, fractionsPaper3,
   fractionsPaper4, fractionsPaper5, fractionsPaper6,
   ratioPaper1, ratioPaper2, ratioPaper3,
+  algebraPaper1, algebraPaper2, algebraPaper3,
 ];
 
 export function getPaper(id: string): Paper | undefined {
