@@ -16,6 +16,7 @@ const WORLD_NAMES: Record<string, string> = {
   areas:     'Shape Station',
   shapes:    'Polygon Park',
   fractions: 'Fraction Forest',
+  ratio:     'Ratio Road',
 };
 
 export default function Home() {
